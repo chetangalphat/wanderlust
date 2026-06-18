@@ -1,0 +1,247 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+#filters{
+  display:flex;
+  align-items:center;
+  overflow-x:auto;
+  padding:1rem 2rem;
+  gap:2rem;
+  border-bottom:1px solid #e9ecef;
+  margin-bottom:2rem;
+}
+
+#filters::-webkit-scrollbar{
+  display:none;
+}
+
+.filter{
+  text-align:center;
+  opacity:0.7;
+  min-width:80px;
+  transition:all 0.2s ease;
+}
+
+.filter:hover{
+  opacity:1;
+  cursor:pointer;
+  transform:translateY(-2px);
+}
+
+.filter i{
+  font-size:1.3rem;
+  margin-bottom:0.5rem;
+}
+
+.filter p{
+  font-size:0.85rem;
+  margin:0;
+}
+
+.tax-toggle{
+  border:1px solid #ccc;
+  border-radius:1rem;
+  padding:0.8rem 1rem;
+  margin-left:auto;
+  white-space:nowrap;
+}
+</style>
+
+<!-- <div id="filters" class="container-fluid px-5">
+
+  <div class="filter">
+    <i class="fa-solid fa-fire"></i>
+    <p>Trending</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-bed"></i>
+    <p>Rooms</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-mountain"></i>
+    <p>Mountains</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-chess-rook"></i>
+    <p>Castles</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-water-ladder"></i>
+    <p>Pools</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-umbrella-beach"></i>
+    <p>Beach</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-tree"></i>
+    <p>Forest</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-city"></i>
+    <p>Cities</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-snowflake"></i>
+    <p>Arctic</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-campground"></i>
+    <p>Camping</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-ship"></i>
+    <p>Boats</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-person-swimming"></i>
+    <p>Surfing</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-house"></i>
+    <p>Cabins</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-tree-city"></i>
+    <p>Countryside</p>
+  </div>
+
+  <div class="tax-toggle">
+    Display total before taxes
+  </div>
+
+</div> -->
+
+<div id="filters">
+
+  <div class="filter">
+    <i class="fa-solid fa-fire"></i>
+    <p>Trending</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-bed"></i>
+    <p>Rooms</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-mountain"></i>
+    <p>Mountains</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-water-ladder"></i>
+    <p>Pools</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-umbrella-beach"></i>
+    <p>Beach</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-chess-rook"></i>
+    <p>Castles</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-person-swimming"></i>
+    <p>Surfing</p>
+  </div>
+
+  <div class="filter">
+    <i class="fa-solid fa-house"></i>
+    <p>Cabins</p>
+  </div>
+
+  
+
+  <button class="filter-btn">
+    <i class="fa-solid fa-sliders"></i>
+    Filters
+  </button>
+
+  <div class="tax-toggle">
+    <div class="form-check form-switch m-0">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="taxSwitch"
+      >
+      <label
+        class="form-check-label"
+        for="taxSwitch"
+      >
+        Display total before taxes
+      </label>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4 ">
+  <% for(let listing of allListings) { %>
+    <div class="col">
+      <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="card h-100 listing-card">
+
+          <img src="<%= listing.image.url || listing.image %>" 
+               class="card-img-top" 
+               style="height: 20rem;">
+
+          <div class="card-img-overlay"></div>
+
+          <div class="card-body">
+           <b><%= listing.title %></b>
+
+<p class="listing-price">
+  <span class="fw-bold">
+    &#8377; <%= listing.price.toLocaleString("en-IN") %>
+  </span>
+
+  <span class="tax-info">
+    +18% GST
+  </span>
+</p>
+          </div>
+
+        </div>
+
+      </a>
+
+    </div>
+
+  <% } %>
+
+</div>
+
+
+<script>
+let taxSwitch = document.getElementById("taxSwitch");
+
+taxSwitch.addEventListener("click", () => {
+  let taxInfo = document.getElementsByClassName("tax-info");
+
+  for(let info of taxInfo){
+    if(info.style.display != "inline"){
+      info.style.display = "inline";
+    } else {
+      info.style.display = "none";
+    }
+  }
+});
+</script>
