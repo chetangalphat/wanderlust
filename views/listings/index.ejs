@@ -1,172 +1,222 @@
 <% layout("/layouts/boilerplate") %>
 <style>
+
+/* FILTER BAR */
+
 #filters{
-  display:flex;
-  align-items:center;
-  overflow-x:auto;
-  padding:1rem 2rem;
-  gap:2rem;
-  border-bottom:1px solid #e9ecef;
-  margin-bottom:2rem;
+    display:flex;
+    align-items:center;
+   gap:2.2rem;
+    
+    overflow-x:auto;
+    padding:1rem 2rem;
+    margin-bottom:1rem;
+    border-bottom:1px solid #ececec;
+    background:#fff;
+    scrollbar-width:none;
 }
 
 #filters::-webkit-scrollbar{
-  display:none;
+    display:none;
 }
 
+/* FILTER ITEM  */
+
+
 .filter{
-  text-align:center;
-  opacity:0.7;
-  min-width:80px;
-  transition:all 0.2s ease;
+    min-width:90px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    cursor:pointer;
+    opacity:0.9;
+    padding-bottom:0.8rem;
+    border-bottom:2px solid transparent;
+    transition:all 0.25s ease;
 }
 
 .filter:hover{
-  opacity:1;
-  cursor:pointer;
-  transform:translateY(-2px);
+    opacity:1;
+    border-bottom:2px solid #222;
 }
 
 .filter i{
-  font-size:1.3rem;
-  margin-bottom:0.5rem;
+    font-size:1.5rem;
+    color:#444;
+    margin-bottom:0.45rem;
+    line-height:1;
 }
 
 .filter p{
-  font-size:0.85rem;
-  margin:0;
+    margin:0;
+    font-size:0.85rem;
+    font-weight:600;
+    color:#444;
+    text-align:center;
+    line-height:1.2;
 }
+
+.filter span{
+    font-size:0.9rem;
+    font-weight:600;
+    color:#222;
+}
+
+.filter:hover i,
+.filter:hover p{
+    color:#222;
+}
+
+/* ACTIVE FILTER */
+
+.filter.active{
+    opacity:1;
+    border-bottom:2px solid #222;
+}
+
+.filter.active i,
+.filter.active p{
+    color:#222;
+}
+
+/* FILTER BUTTON */
+
+.filter-btn{
+    margin-left:auto;
+    border:1px solid #dcdcdc;
+    background:#fff;
+    border-radius:12px;
+    padding:0.75rem 1rem;
+    font-size:0.9rem;
+    font-weight:600;
+    transition:all 0.25s ease;
+}
+
+.filter-btn:hover{
+    box-shadow:0 2px 10px rgba(0,0,0,0.12);
+    transform:translateY(-1px);
+}
+
+/* TAX TOGGLE */
 
 .tax-toggle{
-  border:1px solid #ccc;
-  border-radius:1rem;
-  padding:0.8rem 1rem;
-  margin-left:auto;
-  white-space:nowrap;
+    border:1px solid #dcdcdc;
+    border-radius:12px;
+    padding:0.75rem 1rem;
+    background:#fff;
+    white-space:nowrap;
+    transition:all 0.25s ease;
 }
+
+.tax-toggle:hover{
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* LISTING CARDS */
+
+.listing-card{
+    border:none !important;
+    transition:all 0.3s ease;
+}
+
+.listing-card:hover{
+    transform:translateY(-5px);
+}
+
+.card-img-top{
+    border-radius:18px !important;
+    object-fit:cover;
+}
+
+.listing-price{
+    font-size:1rem;
+    font-weight:600;
+}
+
+.tax-info{
+    display:none;
+    color:#717171;
+    font-size:0.9rem;
+}
+
+/* MOBILE freinfly */
+
+@media(max-width:768px){
+
+    #filters{
+        gap:1rem;
+        padding:0.8rem;
+    }
+
+    .filter{
+        min-width:75px;
+    }
+
+    .filter i{
+        font-size:1.15rem;
+    }
+
+    .filter p{
+        font-size:0.72rem;
+    }
+
+    .filter-btn,
+    .tax-toggle{
+        display:none;
+    }
+}
+
+.card-img-top{
+    height:20rem;
+    object-fit:cover;
+    border-radius:18px !important;
+    transition:all 0.3s ease;
+}
+
+.listing-card:hover .card-img-top{
+    transform:scale(1.02);
+}
+
 </style>
-
-<!-- <div id="filters" class="container-fluid px-5">
-
-  <div class="filter">
-    <i class="fa-solid fa-fire"></i>
-    <p>Trending</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-bed"></i>
-    <p>Rooms</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-mountain"></i>
-    <p>Mountains</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-chess-rook"></i>
-    <p>Castles</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-water-ladder"></i>
-    <p>Pools</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-umbrella-beach"></i>
-    <p>Beach</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-tree"></i>
-    <p>Forest</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-city"></i>
-    <p>Cities</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-snowflake"></i>
-    <p>Arctic</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-campground"></i>
-    <p>Camping</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-ship"></i>
-    <p>Boats</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-person-swimming"></i>
-    <p>Surfing</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-house"></i>
-    <p>Cabins</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-tree-city"></i>
-    <p>Countryside</p>
-  </div>
-
-  <div class="tax-toggle">
-    Display total before taxes
-  </div>
-
-</div> -->
 
 <div id="filters">
 
   <div class="filter">
-    <i class="fa-solid fa-fire"></i>
-    <p>Trending</p>
-  </div>
+  <i class="fa-solid fa-fire"></i>
+  <span>Trending</span>
+</div>
 
-  <div class="filter">
-    <i class="fa-solid fa-bed"></i>
-    <p>Rooms</p>
-  </div>
+<div class="filter">
+  <i class="fa-solid fa-bed"></i>
+  <span>Rooms</span>
+</div>
 
-  <div class="filter">
-    <i class="fa-solid fa-mountain"></i>
-    <p>Mountains</p>
-  </div>
+<div class="filter">
+ <i class="fa-solid fa-mountain"></i>
+  <span>Mountains</span>
+</div>
 
-  <div class="filter">
-    <i class="fa-solid fa-water-ladder"></i>
-    <p>Pools</p>
-  </div>
+<div class="filter">
+  <i class="fa-solid fa-water-ladder"></i>
+  <span>Pools</span>
+</div>
 
-  <div class="filter">
-    <i class="fa-solid fa-umbrella-beach"></i>
-    <p>Beach</p>
-  </div>
+<div class="filter">
+  <i class="fa-solid fa-umbrella-beach"></i>
+  <span>Beach</span>
+</div>
 
-  <div class="filter">
-    <i class="fa-solid fa-chess-rook"></i>
-    <p>Castles</p>
-  </div>
+<div class="filter">
+<i class="fa-solid fa-chess-rook"></i>
+  <span>Castles</span>
+</div>
 
-  <div class="filter">
-    <i class="fa-solid fa-person-swimming"></i>
-    <p>Surfing</p>
-  </div>
-
-  <div class="filter">
-    <i class="fa-solid fa-house"></i>
-    <p>Cabins</p>
-  </div>
-
-  
+<div class="filter">
+ <i class="fa-solid fa-person-swimming"></i>
+  <span>Surfing</span>
+</div>  
 
   <button class="filter-btn">
     <i class="fa-solid fa-sliders"></i>
@@ -192,31 +242,65 @@
 </div>
 
 
+<div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 g-4">
 
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4 ">
   <% for(let listing of allListings) { %>
+
     <div class="col">
+
       <a href="/listings/<%= listing._id %>" class="listing-link">
+
         <div class="card h-100 listing-card">
 
-          <img src="<%= listing.image.url || listing.image %>" 
-               class="card-img-top" 
-               style="height: 20rem;">
+          <div class="position-relative">
 
-          <div class="card-img-overlay"></div>
+            <img
+              src="<%= listing.image.url || listing.image %>"
+              class="card-img-top"
+            >
 
-          <div class="card-body">
-           <b><%= listing.title %></b>
+            <div class="wishlist-icon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
 
-<p class="listing-price">
-  <span class="fw-bold">
-    &#8377; <%= listing.price.toLocaleString("en-IN") %>
-  </span>
+          </div>
 
-  <span class="tax-info">
-    +18% GST
-  </span>
-</p>
+          <div class="card-body mt-2">
+
+            <div class="d-flex justify-content-between align-items-start">
+
+              <div>
+
+                <div class="listing-title">
+                  <%= listing.title %>
+                </div>
+
+                <div class="listing-location">
+                  India
+                </div>
+
+              </div>
+
+              <div class="listing-rating">
+                <i class="fa-solid fa-star"></i> 4.8
+              </div>
+
+            </div>
+
+            <p class="listing-price mt-1">
+
+              <span class="fw-bold">
+                ₹ <%= listing.price.toLocaleString("en-IN") %>
+              </span>
+
+              / night
+
+              <span class="tax-info">
+                +18% GST
+              </span>
+
+            </p>
+
           </div>
 
         </div>
@@ -228,6 +312,7 @@
   <% } %>
 
 </div>
+
 
 
 <script>

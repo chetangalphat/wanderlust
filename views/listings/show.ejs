@@ -12,31 +12,29 @@
       />
 
       <div class="card-body p-4">
-         <p>
-  Owner:
-  <%= listing.owner ? listing.owner.username : "No Owner" %>
+         <p class="text-muted mb-2">
+  Hosted by <b><%= listing.owner ? listing.owner.username : "Host" %></b>
 </p>
-        <h2 class="mb-3 fw-bold">
+        <h2 class="fw-bold mb-2">
           <%= listing.title %>
         </h2>
+
+       <p class="text-secondary mb-4">
+  <i class="fa-solid fa-location-dot"></i>
+  <%= listing.location %>, <%= listing.country %>
+</p>
        
 
         <p class="text-muted mb-3">
           <%= listing.description %>
         </p>
 
-        <h5 class="text-danger fw-bold">
-          &#8377; <%= listing.price.toLocaleString("en-IN") %>
-        </h5>
+     <h4 class="fw-bold mb-4">
+  ₹<%= listing.price.toLocaleString("en-IN") %>
+  <span class="fs-6 text-muted fw-normal">night</span>
+</h4>
 
-        <p class="mb-1">
-          <i class="fa-solid fa-location-dot"></i>
-          <%= listing.location %>
-        </p>
-
-        <p class="text-muted">
-          <%= listing.country %>
-        </p>
+      
         <!-- Buttons -->
      
 
@@ -64,59 +62,79 @@
 
 
 <% if(currUser) { %>
-
 <!-- Review Form -->
-<div class="card shadow-sm border-0 mt-5 p-4">
-  <h4 class="mb-4 fw-bold">
-    Leave a Review
-  </h4>
+<div class="card border-0 shadow-sm rounded-4 mt-5">
 
-  <form
-    action="/listings/<%= listing.id %>/reviews"
-    method="POST"
-    novalidate
-    class="needs-validation"
-  >
+  <div class="card-body p-4">
 
-    <div class="mb-4">
-      <label for="rating" class="form-label fw-semibold">
-        Rating
-      </label>
+    <h4 class="fw-bold mb-4">
+      ⭐ Leave a Review
+    </h4>
 
-      <input
-        type="range"
-        min="1"
-        max="5"
-        id="rating"
-        name="review[rating]"
-        class="form-range"
-      />
-    </div>
+    <form
+      action="/listings/<%= listing.id %>/reviews"
+      method="POST"
+      novalidate
+      class="needs-validation"
+    >
 
-    <div class="mb-3">
-      <label for="comment" class="form-label fw-semibold">
-        Comment
-      </label>
+      <div class="mb-4">
 
-      <textarea
-        name="review[comment]"
-        id="comment"
-        rows="4"
-        class="form-control"
-        placeholder="Write your review here..."
-        required
-      ></textarea>
+        <label
+          for="rating"
+          class="form-label fw-semibold"
+        >
+          Rating
+        </label>
 
-      <div class="invalid-feedback">
-        Please add some comments for review
+        <input
+          type="range"
+          min="1"
+          max="5"
+          id="rating"
+          name="review[rating]"
+          class="form-range"
+        >
+
+        <div class="d-flex justify-content-between text-muted small">
+          <span>Poor</span>
+          <span>Excellent</span>
+        </div>
+
       </div>
-    </div>
 
-    <button class="btn btn-dark px-4">
-      Submit
-    </button>
+      <div class="mb-4">
 
-  </form>
+        <label
+          for="comment"
+          class="form-label fw-semibold"
+        >
+          Comment
+        </label>
+
+        <textarea
+          name="review[comment]"
+          id="comment"
+          rows="4"
+          class="form-control rounded-3"
+          placeholder="Share your experience..."
+          required
+        ></textarea>
+
+        <div class="invalid-feedback">
+          Please add some comments for review
+        </div>
+
+      </div>
+
+      <button class="btn btn-dark px-4 rounded-3">
+        Submit Review
+      </button>
+
+    </form>
+
+  </div>
+
 </div>
 
 <% } %>

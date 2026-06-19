@@ -17,3 +17,25 @@
     }, false);
   });
 })();
+
+const profileBtn = document.getElementById("profileBtn");
+const profileDropdown = document.getElementById("profileDropdown");
+
+if(profileBtn){
+
+    profileBtn.addEventListener("click", () => {
+        profileDropdown.classList.toggle("show");
+    });
+
+    document.addEventListener("click", (e) => {
+
+        if(
+            !profileBtn.contains(e.target) &&
+            !profileDropdown.contains(e.target)
+        ){
+            profileDropdown.classList.remove("show");
+        }
+
+    });
+
+}

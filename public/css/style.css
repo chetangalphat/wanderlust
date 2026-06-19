@@ -265,3 +265,239 @@ body{
 .search-bar input{
     font-size: 0.95rem;
 }
+
+
+/* add kia  */
+/* Airbnb Style Navbar */
+.navbar{
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.search-bar{
+    width: 420px;
+    border-radius: 999px;
+    padding: 0.5rem 0.5rem 0.5rem 1.2rem;
+}
+
+.search-bar:hover{
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+.host-link{
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+}
+
+.host-link:hover{
+    background: #f7f7f7;
+}
+
+.profile-menu{
+    position: relative;
+}
+
+.profile-btn{
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 999px;
+    padding: 0.6rem 0.9rem;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profile-btn:hover{
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.profile-btn .fa-circle-user{
+    font-size: 1.8rem;
+    color: #666;
+}
+
+.profile-dropdown{
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 220px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    display: none;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.profile-dropdown.show{
+    display: block;
+}
+
+.profile-dropdown a{
+    display: block;
+    padding: 12px 18px;
+    text-decoration: none;
+    color: #222;
+}
+
+.profile-dropdown a:hover{
+    background: #f7f7f7;
+}
+
+.profile-dropdown hr{
+    margin: 0;
+}
+
+@media(max-width:768px){
+
+    .search-bar{
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .host-link{
+        display:none;
+    }
+
+    .navbar-brand{
+        font-size: 1.3rem !important;
+    }
+}
+/* yahaa tak */
+
+@media(max-width:768px){
+
+  #filters{
+    gap:1rem;
+    padding:0.8rem;
+  }
+
+  .filter{
+    min-width:65px;
+  }
+
+  .filter i{
+    font-size:1.1rem;
+  }
+
+  .filter p{
+    font-size:0.72rem;
+  }
+
+  .tax-toggle{
+    display:none;
+  }
+}
+
+.listing-card{
+    border:none !important;
+    background:white;
+}
+
+.listing-title{
+    font-size:0.95rem;
+    font-weight:700;
+    color:#222;
+}
+
+.listing-location{
+    font-size:0.85rem;
+    color:#717171;
+}
+
+.listing-rating{
+    font-size:0.9rem;
+    font-weight:600;
+    color:#222;
+}
+
+.listing-rating i{
+    color:#ff385c;
+}
+
+.wishlist-icon{
+    position:absolute;
+    top:12px;
+    right:12px;
+    color:white;
+    font-size:1.3rem;
+    z-index:5;
+    text-shadow:0 2px 5px rgba(0,0,0,0.4);
+}
+
+.card-img-top{
+    height:18rem !important;
+    object-fit:cover;
+    border-radius:18px !important;
+    transition:all 0.3s ease;
+}
+
+.listing-card:hover .card-img-top{
+    transform:scale(1.03);
+}
+
+.listing-price{
+    font-size:0.9rem;
+    color:#222;
+}
+
+.show-img{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+.show-card{
+    border:none !important;
+    box-shadow:none !important;
+}
+
+.show-card .card-body{
+    padding:2rem !important;
+}
+
+@media(max-width:768px){
+    .show-img{
+        height:280px;
+    }
+}
+
+.review-card{
+    border-radius:16px !important;
+    transition:0.3s;
+}
+
+.review-card:hover{
+    transform:translateY(-3px);
+}
+
+.form-range{
+    cursor:pointer;
+}
+
+.review-card{
+    border-radius:18px !important;
+    transition:0.3s;
+}
+
+.review-card:hover{
+    transform:translateY(-4px);
+}
+
+.review-card .card-body{
+    padding:1.2rem !important;
+}
+
+.form-range{
+    cursor:pointer;
+}
+
+.form-control{
+    border-radius:12px !important;
+}
+
+.form-control:focus{
+    box-shadow:none !important;
+    border-color:#222 !important;
+}
